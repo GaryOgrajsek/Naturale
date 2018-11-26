@@ -12,6 +12,7 @@ class Naturale{
 	//friend void operator *(Naturale&, Naturale);
 	//friend void operator ^(Naturale&, Naturale);
 	//friend void operator +=(Naturale&);
+	//friend bool operator =(Naturale, Naturale);
 
 private:
 	Lista <int>numero;
@@ -22,7 +23,7 @@ public:
 	//void operator --(int);
 	void Zero();
 	bool Is_Zero();
-	void Fact();
+	Naturale Fact();
 	~Naturale();
 };
 
