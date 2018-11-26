@@ -7,12 +7,10 @@
 
 class Naturale{
 	friend istream & operator>>(istream&, Naturale&);
-	friend ostream & operator<<(ostream&, Naturale);
-	friend void operator --(Naturale&);
-	friend void operator ++(Naturale&);
-	friend void operator +(Naturale&, Naturale&);
-	friend void operator *(Naturale&, Naturale);
-	friend void operator ^(Naturale&, Naturale);
+	friend ostream & operator<<(ostream&, Naturale&);
+	//friend void operator +(Naturale&, Naturale&);
+	//friend void operator *(Naturale&, Naturale);
+	//friend void operator ^(Naturale&, Naturale);
 	//friend void operator +=(Naturale&);
 
 private:
@@ -20,6 +18,8 @@ private:
 
 public:
 	Naturale();
+	//void operator ++(int);
+	//void operator --(int);
 	void Zero();
 	bool Is_Zero();
 	void Fact();
