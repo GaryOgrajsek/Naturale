@@ -96,7 +96,13 @@ bool Naturale::Is_Zero() {
 	return(numero.ControllaSeZero());
 }
 
-void Naturale::Fact(){
+Naturale Naturale::Fact(){
+	Naturale temporaneo = this;
+	if (numero.ControllaSeUno()) {
+		temporaneo.numero.InserisciInTesta(1);
+		return temporaneo;
+	}
+	return numero * Fact(numero - 1);
 }
 
 /*int FATT(int n){
