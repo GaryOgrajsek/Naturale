@@ -104,7 +104,15 @@ Naturale Naturale::Fact(){
 	}
 	return numero * Fact(numero - 1);
 }
-
+template <class tipo>
+bool Lista<tipo>::ControllaSeUno() {
+	Nodo<tipo>* p = L;
+	int check = 0;
+	while (p->getPunt() != 0) {
+		check += p->getInfo();
+	}
+	return (check <= 1);
+}
 /*int FATT(int n){
 	if (n <= 1) return 1;
 	else return n * FATT(n - 1);
