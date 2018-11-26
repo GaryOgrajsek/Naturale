@@ -1,5 +1,4 @@
 #include "Naturale.h"
-#include <math.h>
 #include <iostream>
 #include <string>
 
@@ -11,6 +10,12 @@ Naturale::Naturale() {}
 
 Naturale::~Naturale() {}
 
+bool ValidoInput(int x) {
+	if (x < 0 && x != floor(x)) {
+		return false;
+	}
+	return true;
+}
 //--------------------------------------------------------
 //                     friend
 //--------------------------------------------------------
@@ -22,12 +27,11 @@ istream & operator>>(istream &cin, Naturale &nat) {
 
 	//Numero inserito dall'utente
 	int n;
+	do {
+		cout << "Numero: ";
+		cin >> n;
+	} while (!(ValidoInput(n)));
 	//Serve per contenere il valore della singola cifra di num
-	int cifra;
-
-	//Inserimento del numero da tastiera
-	cout << "Numero da inserire: ";
-	cin >> n;
 
 	//------------- Controllo ------------------
 	//Il numero deve essere maggiore di zero
@@ -39,12 +43,10 @@ istream & operator>>(istream &cin, Naturale &nat) {
 
 	//Scansiona tutte le cifre del numero
 	//Le inserisce in testa alla lista
-	while (n >= 0) {
+	while (n != 0) {
 		//Ottiene la prima cifra del numero
-		cifra = n % 10;
-
 		//Inserisce in testa la cifra ottenuta
-		nat.numero.InserisciInTesta(cifra);
+		nat.numero.InserisciInTesta(n % 10);
 
 		//Sposta la seconda cifra in prima posizione
 		n /= 10;
@@ -56,21 +58,21 @@ istream & operator>>(istream &cin, Naturale &nat) {
 //--------------------------------
 //            Output
 //--------------------------------
-template<class tipo>
+
 ostream &operator<<(ostream &cout, Naturale &nat) {
 
-	Nodo<tipo>* p = L;
+	Nodo<int>* p = nat.numero.GetElle();
 
 	//Contiene la lista
-	string str = null;
+	string str="";
 
-	//Finchè il puntatore non punta a nullptr
+	//FinchÃ¨ il puntatore non punta a nullptr
 	while (p != nullptr) {
 		//Riceve il numero dal nodo
-		str += p->getInfo();
+		str += to_string(p->getInfo());
 
 		//Sposta p al nodo successivo
-		p->getPunt();
+		p = p->getPunt();
 	}
 
 	//Stampa la stringa
